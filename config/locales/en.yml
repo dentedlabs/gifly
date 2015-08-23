@@ -1,0 +1,8 @@
+en:
+  messages:
+    errors:
+      too_many_requests: You seem to be asking a lot of me!
+      invalid_request: You can't change that without more detail.
+      invalid_user: "Can not seem to find who you're looking for."
+      not_found: "No %{type.upcase} with %{slug}"
+    success: Success
