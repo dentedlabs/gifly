@@ -31,9 +31,6 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
-# Open Connections
-gem 'rest-client'
-
 # Notifiers
 gem 'slack-notifier'
 
@@ -46,7 +43,7 @@ group :development, :production do
   # Notifications / Monitoring
   gem 'newrelic_rpm'
   # Caching
-  gem 'dalli'
+  # gem 'dalli'
 end
 
 group :production do
