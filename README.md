@@ -7,6 +7,7 @@ Messaging on Slack can be boring if only just webhooks from GitHub/Bitbucket and
 - RethinkDB (default config for development)
 
 ## Test with RSpec
+      rake nobrainer:sync_schema # if any issues, but should run under development when server is run
       bundle exec rspec
 
 ## TODO

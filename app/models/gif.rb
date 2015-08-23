@@ -3,6 +3,7 @@ class Gif
   include NoBrainer::Document::Timestamps
 
   field :source, type: String
-  field :tags, type: Array, index: true
+  field :tags, type: Array, index: true, default: []
+  field :rating, type: String
   belongs_to :user
 end
