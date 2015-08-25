@@ -1,10 +1,12 @@
+application = "gifly"
+
 # Set your full path to application.
 app_dir = File.expand_path('../../', __FILE__)
 shared_dir = File.expand_path('../../../shared/', __FILE__)
 
 # Set unicorn options
 worker_processes 2
-preload_app true
+preload_app false
 timeout 30
 
 # Fill path to your app
