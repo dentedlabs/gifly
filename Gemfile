@@ -47,12 +47,12 @@ group :development, :production do
   gem 'newrelic_rpm'
   # Caching
   # gem 'dalli'
+  gem 'unicorn'
+  # gem 'sidekiq'
 end
 
 group :production do
   # gem 'le' # LogEntries
-  # gem 'sidekiq'
-  gem 'unicorn'
 end
 
 gem 'mina'
