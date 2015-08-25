@@ -48,7 +48,7 @@ group :development, :production do
   # Caching
   # gem 'dalli'
   gem 'unicorn'
-  # gem 'sidekiq'
+  gem 'sidekiq'
 end
 
 group :production do

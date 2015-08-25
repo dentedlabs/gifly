@@ -9,7 +9,7 @@ set :domain, '128.199.73.11' # single server deploy
 set :domains_do, ['128.199.73.11']
 set :deploy_to, '/srv/www/gifly.dented.io'
 set :repository, 'git@github.com:dentedio/gifly.git'
-set :branch, 'master'
+set :branch, 'develop'
 set :deploy_environment, 'production'
 set :forward_agent, true
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
@@ -19,10 +19,10 @@ set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 set :shared_paths, ['config/secrets.yml', 'config/newrelic.yml', 'log', 'tmp', 'config/settings']
 
 # Optional settings:
-set :user, 'deployer'
+set :user, 'root'
 set :identity_file, "#{ENV['HOME']}/.ssh/id_rsa"
 
-set :user_do, 'deployer'    # Username in the server to SSH to.
+set :user_do, 'root'    # Username in the server to SSH to.
 set :identity_file_do, "#{ENV['HOME']}/.ssh/digital_ocean" # ssh key used to connect
 
 set :rbenv_path, '/usr/local/rbenv'
