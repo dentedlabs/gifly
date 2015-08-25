@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :seeding, only: [:create]
-
-  resources :gifs, only: [:index, :show]
+  resources :gifs, only: [:index, :show] do
+    get :search, on: :collection
+  end
+  resources :search, only: [:index]
 
 end

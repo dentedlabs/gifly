@@ -16,6 +16,7 @@ gem 'nobrainer'
 # Model
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'yajl-ruby', require: 'yajl'
+gem 'kaminari-nobrainer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -37,6 +38,8 @@ gem 'slack-notifier'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+gem 'rest-client'
+
 # gem 'travis'
 
 group :development, :production do
@@ -48,6 +51,9 @@ end
 
 group :production do
   # gem 'le' # LogEntries
+  # gem 'sidekiq'
+  gem 'unicorn'
 end
 
 gem 'mina'
+gem 'mina-unicorn', :require => false

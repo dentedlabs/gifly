@@ -2,14 +2,17 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
+require 'mina/unicorn'
 # require 'mina_sidekiq/tasks' # for background tasks
 
-set :domain, '128.199.73.24' # single server deploy
+set :domain, '128.199.73.11' # single server deploy
 set :domains_do, ['128.199.73.11']
 set :deploy_to, '/srv/www/gifly.dented.io'
 set :repository, 'git@github.com:dentedio/gifly.git'
 set :branch, 'master'
 set :deploy_environment, 'production'
+set :forward_agent, true
+set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
@@ -100,7 +103,7 @@ task :deploy => :environment do
     invoke :'bundle:install'
 
     to :launch do
-      invoke :'passenger:restart'
+      invoke :'unicorn:restart'
     end
 
     invoke :'deploy:cleanup'
