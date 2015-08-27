@@ -15,6 +15,11 @@ class ApplicationController < ActionController::Base
   end
 
   def render_success_response(data = {}, opts = {})
+    json_response = { data: data }.merge(opts)
+    render json: json_response, status: 200
+  end
+
+  def render_slack_success_response(data = {}, opts = {})
     json_response = { attachments: [data] }.merge(opts)
     render json: json_response, status: 200
   end

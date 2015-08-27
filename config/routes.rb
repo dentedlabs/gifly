@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :gifs, only: [:index, :show] do
-    get :search, on: :collection
-  end
+  resources :gifs, only: [:index, :show]
   resources :search, only: [:index]
 
 end

@@ -15,17 +15,6 @@ class GifsController < ApplicationController
     end
   end
 
-  def search
-    Rails.logger.error("Slack #{params.inspect}")
-    if query_params[:token] != CONFIG.slack_token
-      gifs = Gif.where(:tags.include => query_params[:text])
-      gif = gifs.any? ? gifs.first : Gif.sample
-      render_success_response(serialize_gif(gif))
-    else
-      render_failure_response("404", 404)
-    end
-  end
-
   private
 
   def serialize_gifs gifs
