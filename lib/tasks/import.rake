@@ -4,8 +4,6 @@ WebMock.allow_net_connect!
 namespace :import do
   desc "Go through categories and import missing gifs from Giphy"
   task giphy: :environment do
-    file = IO.read('data.json', encoding: 'utf-8')
-    parser = Yajl::Parser.new
     base_url = "http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC"
     offset = 0
     limit = 1000

@@ -12,18 +12,18 @@ set :repository, 'git@github.com:dentedio/gifly.git'
 set :branch, 'develop'
 set :deploy_environment, 'production'
 set :forward_agent, true
-set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
+set :unicorn_pid, "#{deploy_to}/shared/tmp/pids/unicorn.pid"
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['config/secrets.yml', 'config/newrelic.yml', 'log', 'tmp', 'config/settings']
 
 # Optional settings:
-set :user, 'root'
+set :user, 'deployer'
 set :identity_file, "#{ENV['HOME']}/.ssh/id_rsa"
 
-set :user_do, 'root'    # Username in the server to SSH to.
-set :identity_file_do, "#{ENV['HOME']}/.ssh/digital_ocean" # ssh key used to connect
+set :user_do, 'deployer'    # Username in the server to SSH to.
+set :identity_file_do, "#{ENV['HOME']}/.ssh/id_rsa" # ssh key used to connect
 
 set :rbenv_path, '/usr/local/rbenv'
 
@@ -104,8 +104,14 @@ task :deploy => :environment do
 
     to :launch do
       invoke :'unicorn:restart'
+      invite :'sync_db'
     end
 
     invoke :'deploy:cleanup'
   end
+end
+
+desc "Sync Database"
+task :sync_db => :environment do
+  queue "cd #{deploy_to}/current ; bundle exec rake nobrainer:sync_schema"
 end

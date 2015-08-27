@@ -2,7 +2,7 @@ class GifsController < ApplicationController
   before_action :set_gif, only: [:show]
 
   def index
-    gifs = Gif.page(params[:page])
+    gifs = Gif.all.page(params[:page])
     paging = get_paging(gifs)
     render_success_response(serialize_gifs(gifs), {links: paging})
   end
