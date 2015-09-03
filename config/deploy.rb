@@ -104,7 +104,7 @@ task :deploy => :environment do
 
     to :launch do
       invoke :'unicorn:restart'
-      invite :'sync_db'
+      invoke :'sync_db'
     end
 
     invoke :'deploy:cleanup'
