@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     render_failure_response(I18n.t('messages.errors.invalid_request'), 422)
   end
 
-  def render_failure_response(message, status)
+  def render_failure_response(message, status=422)
     render json: { meta: { status: status, message: message } }, status: status
   end
 
