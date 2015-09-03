@@ -80,6 +80,7 @@ GEM
       kaminari (>= 0.16.1)
       nobrainer (>= 0.20.0)
     kgio (2.9.3)
+    le (2.6.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -219,6 +220,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   kaminari-nobrainer
+  le
   mina
   mina-unicorn
   newrelic_rpm
