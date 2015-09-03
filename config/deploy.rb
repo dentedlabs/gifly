@@ -103,8 +103,8 @@ task :deploy => :environment do
     invoke :'bundle:install'
 
     to :launch do
-      invoke :'unicorn:restart'
       invoke :'sync_db'
+      invoke :'unicorn:restart'
     end
 
     invoke :'deploy:cleanup'

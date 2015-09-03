@@ -1,5 +1,5 @@
 require 'rest-client'
-WebMock.allow_net_connect!
+# WebMock.allow_net_connect!
 
 namespace :import do
   desc "Go through categories and import missing gifs from Giphy"
