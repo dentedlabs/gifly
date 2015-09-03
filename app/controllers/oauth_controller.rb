@@ -1,7 +1,8 @@
 class OauthController < ApplicationController
 
   def callback
-    @team = Team.find_or_create(uid: env["omniauth.auth"].to_s)
+    Rails.logger.error("Headers: #{request.headers.inspect}")
+    @team = Team.upsert(uid: env["omniauth.auth"].to_s)
     params = {
       client_id: CONFIG.slack.key,
       client_secret: CONFIG.slack.secret,

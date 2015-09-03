@@ -4,7 +4,7 @@ class Gif
 
   field :id, :uniq => { scope: :source }
   field :source, type: String
-  field :tags, type: Array, index: true, default: []
+  field :tags, type: Array, index: :multi, default: []
   field :rating, type: String
   belongs_to :user
 end

@@ -2,7 +2,6 @@
 class SearchController < ApplicationController
 
   def index
-    Rails.logger.error("Slack #{params.inspect}")
     # if query_params[:token] != CONFIG.slack_token
 
     # options = {
@@ -17,7 +16,7 @@ class SearchController < ApplicationController
     #   render_failure_response("404", 404)
     # end
 
-    gifs = Gif.where(:tags.include => sanitize_query_text)
+    gifs = Gif.where(:tags.any => sanitize_query_text)
     gif = gifs.any? ? gifs.first : Gif.sample
     render_success_response(serialize_gif(gif))
   end
