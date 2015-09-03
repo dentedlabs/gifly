@@ -13,11 +13,16 @@ class OauthController < ApplicationController
       update_team_attributes = {
         name: response['team_name'],
         scope: response['scope'],
-        code: slack_params[:code],
-        channel_id: response['incoming_webhook']['channel'],
-        configuration_url: response['incoming_webhook']['configuration_url'],
-        webhook_url: response['incoming_webhook']['url']
+        code: slack_params[:code]
       }
+      if(response.has_key?('incoming_webhook'))
+        update_team_attributes.merge!({
+          channel_id: response['incoming_webhook']['channel'],
+          configuration_url: response['incoming_webhook']['configuration_url'],
+          webhook_url: response['incoming_webhook']['url']
+        })
+      end
+
       team = Team.where(access_token: response['access_token'].to_s).first_or_create!(update_team_attributes)
       render_success_response(serialize_team(team))
     else
