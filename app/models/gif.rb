@@ -2,7 +2,7 @@ class Gif
   include NoBrainer::Document
   include NoBrainer::Document::Timestamps
 
-  field :id, :uniq => { :scope => :source }
+  field :id, :uniq => { scope: :source }
   field :source, type: String
   field :tags, type: Array, index: true, default: []
   field :rating, type: String

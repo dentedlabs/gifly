@@ -22,7 +22,7 @@ set :shared_paths, ['config/secrets.yml', 'config/newrelic.yml', 'log', 'tmp', '
 set :user, 'deployer'
 set :identity_file, "#{ENV['HOME']}/.ssh/id_rsa"
 
-set :user_do, 'deployer'    # Username in the server to SSH to.
+set :user_do, 'root'    # Username in the server to SSH to.
 set :identity_file_do, "#{ENV['HOME']}/.ssh/id_rsa" # ssh key used to connect
 
 set :rbenv_path, '/usr/local/rbenv'

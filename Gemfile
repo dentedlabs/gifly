@@ -13,10 +13,13 @@ gem 'simpleconfig' # rails environment configurations
 gem 'nobrainer'
 # gem 'mongoid'
 
+gem 'omniauth'
+
 # Model
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'yajl-ruby', require: 'yajl'
 gem 'kaminari-nobrainer'
+gem 'services'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -35,9 +38,6 @@ end
 # Notifiers
 gem 'slack-notifier'
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
-
 gem 'rest-client'
 
 # gem 'travis'
@@ -52,7 +52,7 @@ group :development, :production do
 end
 
 group :production do
-  # gem 'le' # LogEntries
+  gem 'le' # LogEntries
 end
 
 gem 'mina'

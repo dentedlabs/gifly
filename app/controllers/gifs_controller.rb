@@ -33,8 +33,4 @@ class GifsController < ApplicationController
     params.permit(:id)
   end
 
-  def query_params
-    params.permit(:token, :team_id, :team_domain, :channel_id, :channel_name, :user_id, :user_name, :command, :text)
-  end
-
 end
