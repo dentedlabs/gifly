@@ -13,7 +13,7 @@ class OauthController < ApplicationController
       update_team_attributes = {
         scope: response['scope'],
         code: slack_params[:code],
-        channel_id: response['channel_id']
+        channel_id: response['channel_id'],
         webhook_url: response['incoming_webhook']
       }
       team = Team.where(access_token: response['access_token'].to_s).first_or_create!(update_team_attributes)
