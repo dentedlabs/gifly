@@ -5,7 +5,7 @@ class OauthController < ApplicationController
       client_id: CONFIG.slack.key,
       client_secret: CONFIG.slack.secret,
       code: slack_params[:code],
-      redirect_uri: request.original_url.split('?')[0]
+      redirect_uri: "http://gifly.dented.io/oauth/slack/callback" #request.original_url.split('?')[0]
     }
     response = JSON.parse(RestClient.post(CONFIG.slack.access_token_url, post_params))
     Rails.logger.error("Slack Response #{response.inspect} #{post_params.inspect}")
