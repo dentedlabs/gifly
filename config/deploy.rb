@@ -114,4 +114,5 @@ end
 desc "Sync Database"
 task :sync_db => :environment do
   queue "cd #{deploy_to}/current ; bundle exec rake nobrainer:sync_schema"
+  queue "cd #{deploy_to}/current ; bundle exec rake nobrainer:sync_indexes"
 end
