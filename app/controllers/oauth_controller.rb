@@ -7,9 +7,9 @@ class OauthController < ApplicationController
       code: slack_params[:code],
       redirect_uri: request.original_url.split('?')[0]
     }
-    response = JSON.parse(RestClient.post(CONFIG.slack.access_token_url, params: post_params))
+    response = JSON.parse(RestClient.post(CONFIG.slack.access_token_url, post_params))
+    Rails.logger.error("Slack Response #{response.inspect}")
     if(response['ok'])
-      Rails.logger.error("Slack Response #{response.inspect}")
       update_team_attributes = {
         scope: response['scope'],
         code: slack_params[:code],
